@@ -33,3 +33,4 @@ C:\Users\whitm\OneDrive\Documents\Creations\C# Backend\InventoryService\obj\Debu
 C:\Users\whitm\OneDrive\Documents\Creations\C# Backend\InventoryService\obj\Debug\net9.0\InventoryService.pdb
 C:\Users\whitm\OneDrive\Documents\Creations\C# Backend\InventoryService\obj\Debug\net9.0\InventoryService.genruntimeconfig.cache
 C:\Users\whitm\OneDrive\Documents\Creations\C# Backend\InventoryService\obj\Debug\net9.0\ref\InventoryService.dll
+C:\Users\whitm\OneDrive\Documents\Creations\C# Backend\InventoryService\obj\Debug\net9.0\InventoryService.sourcelink.json
