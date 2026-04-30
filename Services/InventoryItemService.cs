@@ -1,9 +1,14 @@
 using InventoryService.Domain;
+using InventoryService.Models;
 
 namespace InventoryService.Services
 {
     public class InventoryItemService
     {
+        //Storage for the Transactions
+        private readonly List<InventoryTransaction> _transactions = new();
+
+        //Returns the list of items
         public List<InventoryItem> GetAllItems()
         {
             var items = new List<InventoryItem>
@@ -14,6 +19,19 @@ namespace InventoryService.Services
             };
 
             return items;
+        }
+
+        public void AddTransaction(CreateInventoryTransactionRequest request)
+        {
+            var transaction = new InventoryTransaction
+            {
+                UserId = request.UserId,
+                InventoryItemID = request.InventoryItemId,
+                QuantityChanged = request.QuantityChanged,
+                Timestamp = DateTime.UtcNow
+            };
+
+            _transactions.Add(transaction);
         }
     }
 }
