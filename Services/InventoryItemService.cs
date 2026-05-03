@@ -10,7 +10,7 @@ namespace InventoryService.Services
         private readonly List<InventoryTransaction> _transactions = new();
 
         //Returns the list of items
-        public List<InventoryItem> GetAllItems()
+        public List<InventoryItemResponse> GetAllItems()
         {
             var items = new List<InventoryItem>
             {
@@ -19,7 +19,25 @@ namespace InventoryService.Services
                 new InventoryItem { Id = 3, Description = "Widget C", ManufacturerId = 102, RetailCost = 29.99m },
             };
 
-            return items;
+            var response = new List<InventoryItemResponse>();
+
+            foreach (var item in items)
+            {
+                var totalQuantityChanged = _transactions
+                    .Where(t => t.InventoryItemID == item.Id)
+                    .Sum(t => t.QuantityChanged);
+
+                response.Add(new InventoryItemResponse
+                {
+                    ResponseId = item.Id,
+                    ResponseDescription = item.Description,
+                    ResponseManufacturerId = item.ManufacturerId,
+                    ResponseRetailCost = item.RetailCost,
+                    ResponseCurrentQuantity = totalQuantityChanged
+                });
+            }
+
+            return response;
         }
 
         public void AddTransaction(CreateInventoryTransactionRequest request)
