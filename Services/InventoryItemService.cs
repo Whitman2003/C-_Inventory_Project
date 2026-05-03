@@ -1,5 +1,6 @@
 using InventoryService.Domain;
 using InventoryService.Models;
+using System.Linq;
 
 namespace InventoryService.Services
 {
@@ -32,6 +33,11 @@ namespace InventoryService.Services
             };
 
             _transactions.Add(transaction);
+        }
+
+        public List<InventoryTransaction> GetTransactions()
+        {
+            return _transactions.OrderByDescending(t => t.Timestamp).ToList();
         }
     }
 }

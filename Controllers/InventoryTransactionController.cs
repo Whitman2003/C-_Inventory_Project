@@ -21,5 +21,11 @@ namespace InventoryService.Controllers
             _service.AddTransaction(request);
             return Ok();
         }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_service.GetTransactions());
+        }
     }
 }
