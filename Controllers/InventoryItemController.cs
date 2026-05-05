@@ -20,5 +20,17 @@ namespace InventoryService.Controllers
         {
             return Ok(_service.GetAllItems());
         }
+
+        [HttpGet("{id}")]
+
+        public IActionResult Get(int id)
+        {
+            var items = _service.GetItemById(id);
+            if (items == null)
+            {
+                return NotFound();
+            }
+            return Ok(items);
+        }
     }
 }

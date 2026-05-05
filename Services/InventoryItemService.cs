@@ -57,5 +57,17 @@ namespace InventoryService.Services
         {
             return _transactions.OrderByDescending(t => t.Timestamp).ToList();
         }
+
+        public InventoryItemResponse? GetItemById(int id)
+        {
+            var item = GetAllItems().FirstOrDefault(i => i.ResponseId == id);
+            
+            if (item == null)
+            {
+                return null; // Item not found
+            }
+            
+            return item;
+        }
     }
 }
